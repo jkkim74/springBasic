@@ -4,16 +4,22 @@ import hello.spring.domain.Member;
 import hello.spring.repository.MemberRepository;
 import hello.spring.repository.MemoryMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 @Transactional
 public class MemberService {
 
     private final MemberRepository memberRepository;
+
+    @Value("${om.banner.api.url}")
+    private String omBannerUrl;
+
 
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
